@@ -4,7 +4,7 @@ This contains a basic baseline model for identifying section in clinical text
 from the paper [A New Public Corpus for Clinical Section Identification:
 MedSecId].  The purpose of this repository is to provide a means to reproduce
 the results in the paper.  If you want to include this work in your own
-projects, use the package described in the [Inclusion in Your
+projects, use the [mimicsid] package described in the [Inclusion in Your
 Projects](#inclusion-in-your-projects) section, which was designed to be an
 off-the-shelf package pip install.
 
