@@ -19,7 +19,7 @@ To train and test the models, use the `run.sh` script by:
 1. Copy the MIMIC-III `NOTEEVENTS.csv` file to the `corpus` directory.
 2. Download the annotation set and uncompress it:
    1. `pushd corpus`
-   2. `wget https://zenodo.org/record/7150451/files/section-id-annotations.zip?download=1`
+   2. `wget https://zenodo.org/record/7150451/files/section-id-annotations.zip`
    3. `unzip section-id-annotations.zip`
    4. `popd`
 3. Remove the repo results: `rm -r results`
