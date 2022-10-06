@@ -1,0 +1,18 @@
+,section,name,description,value
+0,sidmodel_default,embedding,the embedding of the model,word2vec_300_embedding
+1,model_settings,model_name,the name of the model,BiLSTM-CRF_tok (word2vec)
+2,model_settings,epochs,the number of epochs used to train the model,30
+3,model_settings,learning_rate,the learning rate for the update step size of the loss function,0.01
+4,model_settings,scheduler_class_name,the PyTorch scheduler class name used while training to update the learning rate,torch.optim.lr_scheduler.ReduceLROnPlateau
+5,model_settings,scale_gradient_params,scheduler parameters,"{'max_norm': 0.5, 'norm_type': 2.0}"
+6,batch_stash,decoded_attributes,the features used in the model,"{'mask', 'section_ids', 'word2vec_300_embedding'}"
+7,batch_stash,batch_size,the size of the mini-batches used to train the model,20
+8,executor,net_settings,the section definition of the network to use,"EmbeddedRecurrentCRFSettings(name='recurrent_crf_net_settings', config_factory=<zensols.config.importfac.ImportConfigFactory object at 0x7f22e5992f40>, embedding_layer=WordVectorEmbeddingLayer(
+  (emb): Embedding(3000001, 300)
+), recurrent_crf_settings=RecurrentCRFNetworkSettings(name='recurrent_crf_settings', config_factory=<zensols.config.importfac.ImportConfigFactory object at 0x7f22e5992f40>, batch_norm_d=None, batch_norm_features=None, dropout=0.15, activation=None, network_type='lstm', bidirectional=True, input_size=None, hidden_size=250, num_layers=2, num_labels=51, decoder_settings=DeepLinearNetworkSettings(name='linear_settings', config_factory=<zensols.config.importfac.ImportConfigFactory object at 0x7f22e5992f40>, batch_norm_d=None, batch_norm_features=None, dropout=None, activation=None, in_features=None, out_features=51, middle_features=[], proportions=True, repeats=1),  activation=None, score_reduction='sum'),  activation=None, mask_attribute='mask', tensor_predictions=False, use_crf=True)"
+9,recurrent_crf_settings,hidden_size,the hidden size of the LSTM,250
+10,recurrent_crf_settings,num_layers,the number of stacked layers of the LSTM,2
+11,recurrent_crf_settings,num_labels,the number of output classification labels,51
+12,recurrent_crf_settings,bidirectional,whether the LSTM is bidirectional,True
+13,recurrent_crf_settings,dropout,the dropout of the LSTM,0.15
+14,recurrent_crf_net_settings,use_crf,whether the BiLSTM used a CRF output layer,True

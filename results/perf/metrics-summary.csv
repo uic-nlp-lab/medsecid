@@ -1,0 +1,10 @@
+Name,mF1,mP,mR,MF1,MP,MR
+Majority Label,0.023,0.023,0.023,0.000,0.000,0.005
+$\textrm{BERT}_{sent}$,0.925,0.925,0.925,0.589,0.616,0.600
+"$\textrm{BiLSTM-CRF}_{tok}$ (word2vec)",0.927,0.927,0.927,0.778,0.780,0.801
+$\textrm{BERT-CRF}_{sent}$,0.929,0.929,0.929,0.689,0.734,0.700
+$\textrm{BERT}_{sent}$ BioBERT,0.940,0.940,0.940,0.687,0.730,0.679
+$\textrm{BERT-CRF}_{sent}$ BioBERT,0.940,0.940,0.940,0.705,0.757,0.704
+$\textrm{BiLSTM-CRF}_{tok}$ (GloVE 50D),0.954,0.954,0.954,0.760,0.783,0.765
+$\textrm{BiLSTM-CRF}_{tok}$ fastText,0.954,0.954,0.954,0.796,0.806,0.806
+$\textrm{BiLSTM-CRF}_{tok}$ (GloVE 300D),0.955,0.955,0.955,0.787,0.801,0.788

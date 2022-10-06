@@ -1,0 +1,192 @@
+{
+    "name": "BiLSTM-CRF_tok (GloVE 50D): 1",
+    "index": 2,
+    "model_settings": {
+        "name": "model_settings",
+        "model_name": "BiLSTM-CRF_tok (GloVE 50D)",
+        "path": "data/model/bilstm-crf_tok-glove-50d",
+        "learning_rate": 0.01,
+        "epochs": 45,
+        "append_model_path": "normalize",
+        "max_consecutive_increased_count": 9223372036854775807,
+        "nominal_labels": true,
+        "scale_gradient_params": {
+            "max_norm": 0.5,
+            "norm_type": 2.0
+        },
+        "scheduler_class_name": "torch.optim.lr_scheduler.ReduceLROnPlateau",
+        "shuffle_training": false,
+        "batch_limit": 9223372036854775807,
+        "batch_iteration": "gpu",
+        "prediction_mapper_name": "feature_prediction_mapper",
+        "cache_batches": true,
+        "gc_level": 0,
+        "batch_iteration_class_name": "zensols.deeplearn.model.SequenceBatchIterator",
+        "criterion_class_name": "torch.nn.CrossEntropyLoss",
+        "optimizer_class_name": "torch.optim.Adam"
+    },
+    "net_settings": {
+        "name": "recurrent_crf_net_settings",
+        "recurrent_crf_settings": {
+            "name": "recurrent_crf_settings",
+            "dropout": 0.15,
+            "network_type": "lstm",
+            "bidirectional": true,
+            "hidden_size": 150,
+            "num_layers": 2,
+            "num_labels": 51,
+            "decoder_settings": {
+                "name": "linear_settings",
+                "out_features": 51,
+                "middle_features": [],
+                "proportions": true,
+                "repeats": 1
+            },
+            "score_reduction": "sum"
+        },
+        "mask_attribute": "mask",
+        "tensor_predictions": false,
+        "use_crf": true,
+        "module_class_name": "zensols.deepnlp.layer.embrecurcrf.EmbeddedRecurrentCRF"
+    },
+    "dataset_result": {
+        "train": {
+            "n_outcomes": 0,
+            "metrics": {
+                "accuracy": NaN,
+                "n_correct": NaN,
+                "micro": {
+                    "f1": NaN,
+                    "precision": NaN,
+                    "recall": NaN
+                },
+                "macro": {
+                    "f1": NaN,
+                    "precision": NaN,
+                    "recall": NaN
+                }
+            },
+            "start_time": "2022-05-17 00:55:07.992960",
+            "end_time": "2022-05-17 06:16:41.598091",
+            "ave_loss": NaN,
+            "min_loss": 3602.121393966675,
+            "converged_epoch": {
+                "n_outcomes": 0,
+                "metrics": {
+                    "accuracy": NaN,
+                    "n_correct": NaN,
+                    "micro": {
+                        "f1": NaN,
+                        "precision": NaN,
+                        "recall": NaN
+                    },
+                    "macro": {
+                        "f1": NaN,
+                        "precision": NaN,
+                        "recall": NaN
+                    }
+                },
+                "index": 25
+            },
+            "statistics": {
+                "n_epochs": 45,
+                "n_epoch_converged": 26,
+                "n_batches": 80,
+                "ave_data_points": 19.975,
+                "n_total_data_points": 1598
+            }
+        },
+        "validation": {
+            "n_outcomes": 11177100,
+            "metrics": {
+                "accuracy": 0.5656481556038686,
+                "n_correct": 6322306,
+                "micro": {
+                    "f1": 0.5656481556038686,
+                    "precision": 0.5656481556038686,
+                    "recall": 0.5656481556038686
+                },
+                "macro": {
+                    "f1": 0.5060118469512684,
+                    "precision": 0.7006526103309149,
+                    "recall": 0.4335783630891335
+                }
+            },
+            "start_time": "2022-05-17 01:01:58.990729",
+            "end_time": "2022-05-17 06:17:00.420573",
+            "ave_loss": NaN,
+            "min_loss": 13629.983132102272,
+            "converged_epoch": {
+                "n_outcomes": 248380,
+                "metrics": {
+                    "accuracy": 0.9407319429905789,
+                    "n_correct": 233659,
+                    "micro": {
+                        "f1": 0.9407319429905789,
+                        "precision": 0.9407319429905789,
+                        "recall": 0.9407319429905789
+                    },
+                    "macro": {
+                        "f1": 0.7838966064789848,
+                        "precision": 0.8567591870840154,
+                        "recall": 0.767291751043617
+                    }
+                },
+                "index": 20
+            },
+            "statistics": {
+                "n_epochs": 45,
+                "n_epoch_converged": 21,
+                "n_batches": 11,
+                "ave_data_points": 22580.0,
+                "n_total_data_points": 248380
+            }
+        },
+        "test": {
+            "n_outcomes": 290293,
+            "metrics": {
+                "accuracy": 0.9541256592477255,
+                "n_correct": 276976,
+                "micro": {
+                    "f1": 0.9541256592477255,
+                    "precision": 0.9541256592477255,
+                    "recall": 0.9541256592477255
+                },
+                "macro": {
+                    "f1": 0.7601674831857256,
+                    "precision": 0.7826430105687429,
+                    "recall": 0.7650550467480166
+                }
+            },
+            "start_time": "2022-05-17 06:17:03.711840",
+            "end_time": "2022-05-17 06:17:13.750326",
+            "ave_loss": 0.0,
+            "min_loss": 0.0,
+            "converged_epoch": {
+                "n_outcomes": 290293,
+                "metrics": {
+                    "accuracy": 0.9541256592477255,
+                    "n_correct": 276976,
+                    "micro": {
+                        "f1": 0.9541256592477255,
+                        "precision": 0.9541256592477255,
+                        "recall": 0.9541256592477255
+                    },
+                    "macro": {
+                        "f1": 0.7601674831857256,
+                        "precision": 0.7826430105687429,
+                        "recall": 0.7650550467480166
+                    }
+                },
+                "index": 0
+            },
+            "statistics": {
+                "n_epochs": 1,
+                "n_epoch_converged": 1,
+                "n_batches": 11,
+                "ave_data_points": 26390.272727272728,
+                "n_total_data_points": 290293
+            }
+        }
+    }
+}

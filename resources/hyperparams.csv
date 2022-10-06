@@ -1,0 +1,16 @@
+section,name,description
+sidmodel_default,embedding,the embedding of the model
+model_settings,model_name,the name of the model
+model_settings,epochs,the number of epochs used to train the model
+model_settings,learning_rate,the learning rate for the update step size of the loss function
+model_settings,scheduler_class_name,the PyTorch scheduler class name used while training to update the learning rate
+model_settings,scale_gradient_params,scheduler parameters
+batch_stash,decoded_attributes,the features used in the model
+batch_stash,batch_size,the size of the mini-batches used to train the model
+executor,net_settings,the section definition of the network to use
+recurrent_crf_settings,hidden_size,the hidden size of the LSTM
+recurrent_crf_settings,num_layers,the number of stacked layers of the LSTM
+recurrent_crf_settings,num_labels,the number of output classification labels
+recurrent_crf_settings,bidirectional,whether the LSTM is bidirectional
+recurrent_crf_settings,dropout,the dropout of the LSTM
+recurrent_crf_net_settings,use_crf,whether the BiLSTM used a CRF output layer

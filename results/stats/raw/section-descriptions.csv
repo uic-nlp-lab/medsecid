@@ -1,0 +1,52 @@
+section_id,name,description
+24-hour-events,24 Hour Events,Description of what happened in the past 24 hours of the patients stay.
+addendum,Addendum,An addition to the note.
+allergies,Allergies,Patient allergies to medication and food of varying severity.
+assessment-and-plan,Assessment And Plan,An overview of the problems that are occuring and the plan to address each problem.
+critical-care-attending-addendum,Attending Addendum,The attending physician's addition to the note.
+chief-complaint,Chief Complaint,The reason why the patient came to the hospital.
+clinical-implications,Clinical Implications,Why this study is important.
+code-status,Code Status,"What should be done in the event of a cardiac or respiratory arrest, end of goals care."
+communication,Communication,Information about who to contact and the relation to the patient.
+comparison,Comparison,Comparing the new study to prior studies to determine interval changes.
+conclusions,Conclusions,Interpretation of the findings in relation to the patient's condition.
+contrast,Contrast,Was contrast introduced into the patient.
+current-medications,Current Medications,Medications that the patient are taking at home.
+discharge-condition,Discharge Condition,The stability of the patient upon discharge.
+discharge-diagnosis,Discharge Diagnosis,The diagnosis of the patient after being worked up in the hospital.
+discharge-disposition,Discharge Disposition,Where the patient is being discharged to.
+discharge-instructions,Discharge Instructions,Post discharge instructions regarding what the patient can and cannot do.
+discharge-medications,Discharge Medications,Medications that the patient will sent home with and to continue taking.
+disposition,Disposition,Where the patient will go within the hospital.
+family-history,Family History,Medical history of family members.
+findings,Findings,Specific finidngs during the study.
+flowsheet-data-vitals,Flowsheet Data/Vitals,Information pulled from flowsheets that are discretely kept within the ehr.
+history,History,Patient's clinical history warranting exam.
+history-of-present-illness,History Of Present Illness,"A description of the events surrounding the reason why the patient came to the hospital: Symptom onset, duration, severity and associatating factors."
+hospital-course,Hospital Course,A summary of what happened during the patient's time in the hospital.
+image-type,Image Type,The type of study being performed.
+imaging,Imaging,"All image related orders placed by the physician including: CT, XRAY, ECHO, MRI, Ultrasound."
+impression,Impression,Overall summerization of the study.
+indication,Indication,Why the study was performed.
+infusions,Infusions,Medications classified as a constant infusion.
+labs,Labs,Laboratory values.
+labs-imaging,Labs / Imaging,Lab and radiological results.
+last-dose-of-antibiotics,Last Dose Of Antibiotics,Time of the last dose of antibiotic medications.
+major-surgical-or-invasive-procedure,Major Surgical Or Invasive Procedure,Any procedures or surgies that occured while the patient was at the hospital.
+medical-condition,Medical Condition,History of the patient and why the patient needs the study.
+medication-history,Medication History,Medications that the patient are taking at home.
+other-medications,Other Medications,Other medications the patient is receiving.
+past-medical-history,Past Medical History,Medical problems a patient has.
+past-surgical-history,Past Surgical History,All surgeries the patient has had in their past.
+patient-test-information,Patient/Test Information,Basic and standardized information of the patient.
+physical-examination,Physical Examination,Evalutating anatomic finds of a patient through palpation and auscultation.
+prenatal-screens,Prenatal Screens,Screening of blood type and infections prior to delivery.
+procedure,Procedure,Procedure name.
+reason,Reason,Why the consulting team was brought in for the patient's care.
+review-of-systems,Review of Systems,A generalized review of potential symptoms that the patient might not have addressed in the chief complaint or history of present illness.
+social-history,Social History,"History of occupation, recreational activities, and living situation."
+social-and-family-history,Social and Family History,Combination of social and family history.
+technique,Technique,How the procedure was being performed.
+wet-read,Wet Read,"Initial read, not the official read of the study."
+addendum,addendum,An addition to the note.
+facility,facility,The location the patient is going after discharge.

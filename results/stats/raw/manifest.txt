@@ -1,0 +1,9 @@
+corpus-content.csv: corpus content
+ontology.csv: ontology count
+note-events.csv: annotated note events
+multi-sent-anons.csv: number of muliple unique annotations across sentences
+annotation-category.csv: annotation span and token categories
+annotation-section-id.csv: annotation span and token sections
+annotation-section-id-combined.csv: annotation span and token sections combined
+note-descriptions.csv: note descriptions
+section-descriptions.csv: section descriptions

@@ -1,0 +1,755 @@
+Name: BERT-CRF_sent BioBERT: 1
+Run index: 2
+Learning rate: 0.003
+    train:
+        started: 05/17/2022 12:12:22:706264
+        ended: 05/17/2022 12:52:28:508333
+        batches: 80
+        ave data points per batch/total: 26148.2/2091852
+        average over epoch:
+            min/ave/max loss: 2137.41870/9778.55105/7105.90637
+            no results
+            epoch details:
+                index: 0
+                batch IDs: 11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27...
+                data point count per batch: 33324,26647,26904,35175,25833,266...
+        converged epoch:
+            min/ave/max loss: 936.37054/2137.41870/7105.90637
+            no results
+    validation:
+        started: 05/17/2022 12:15:19:463240
+        ended: 05/17/2022 12:52:30:994590
+        batches: 11
+        ave data points per batch/total: 22580.0/248380
+        converged/epochs: 39/50
+        average over epoch:
+            min/ave/max loss: 5486.78172/9382.87352/11706.49292
+            accuracy: 0.891 (11061093/12419000)
+            micro: F1: 0.891, precision: 0.891, recall: 0.891
+            macro: F1: 0.636, precision: 0.713, recall: 0.607
+            weighted: F1: 0.882, precision: 0.878, recall: 0.891
+            epoch details:
+                index: 0
+                batch IDs: 0,1,2,3,4,5,6,7,8,9,10
+                data point count per batch: 24496,22819,24366,25118,26403,321...
+        converged epoch:
+            min/ave/max loss: 38.42737/5486.78172/11706.49292
+            accuracy: 0.924 (229459/248380)
+            micro: F1: 0.924, precision: 0.924, recall: 0.924
+            macro: F1: 0.717, precision: 0.794, recall: 0.704
+            weighted: F1: 0.915, precision: 0.914, recall: 0.924
+    test:
+        started: 05/17/2022 12:52:41:910368
+        ended: 05/17/2022 12:53:06:100415
+        batches: 11
+        ave data points per batch/total: 26390.3/290293
+        min/ave/max loss: 0.00000/0.00000/0.00000
+        accuracy: 0.940 (272862/290293)
+        micro: F1: 0.940, precision: 0.940, recall: 0.940
+        macro: F1: 0.705, precision: 0.757, recall: 0.704
+        weighted: F1: 0.934, precision: 0.938, recall: 0.940
+settings:
+    attributes: ['majorsent_id_mask', 'majorsent_ids', 'section_ids', 'transformer_majorsent_fixed_biobert_embedding']
+    model:
+        name: model_settings
+        model_name: BERT-CRF_sent BioBERT
+        path: data/model/bert-crf_sent-biobert
+        learning_rate: 0.003
+        epochs: 50
+        append_model_path: normalize
+        max_consecutive_increased_count: 9223372036854775807
+        nominal_labels: True
+        scale_gradient_params:
+            max_norm: 0.5
+            norm_type: 2.0
+        scheduler_class_name: torch.optim.lr_scheduler.ReduceLROnPlateau
+        shuffle_training: False
+        batch_limit: 9223372036854775807
+        batch_iteration: gpu
+        prediction_mapper_name: feature_prediction_mapper
+        cache_batches: True
+        gc_level: 0
+        batch_iteration_class_name: zensols.deeplearn.model.SequenceBatchIterator
+        criterion_class_name: torch.nn.CrossEntropyLoss
+        optimizer_class_name: torch.optim.Adam
+    network:
+        name: recurrent_crf_net_settings
+        recurrent_crf_settings:
+            name: recurrent_crf_settings
+            dropout: 0.15
+            network_type: lstm
+            bidirectional: True
+            hidden_size: 150
+            num_layers: 2
+            num_labels: 51
+            decoder_settings:
+                name: linear_settings
+                out_features: 51
+                middle_features:
+                proportions: True
+                repeats: 1
+            score_reduction: sum
+        mask_attribute: majorsent_id_mask
+        tensor_predictions: False
+        use_crf: True
+        non_uniform: False
+        module_class_name: sidmodel.majorsent.MajorSent
+configuration:
+    annotation_stash
+        class_name: sidmodel.AnnotationStash
+        delegate: object: zensols.persist.DictionaryStash
+        anon_path: path: ./corpus/section-id-annotations/annotations
+        notes_text_dir: path: ./corpus/notes
+    appenv
+        root_dir: .
+    batch_dir_stash
+        class_name: zensols.deeplearn.batch.BatchDirectoryCompositeStash
+        path: path: ./data/batch/data
+        groups: eval: (
+set('section_ids mask'.split()),
+set('note_category note_category_token'.split()),
+set('glove_50_embedding'.split()),
+set('glove_300_embedding'.split()),
+set('word2vec_300_embedding'.split()),
+set('fasttext_crawl_300_embedding'.split()),
+set('section_ids_trans masktrans transformer_fixed_embedding'.split()),
+set('majorsent_ids majorsent_id_mask'.split()),
+set('transformer_majorsent_fixed_embedding'.split()),
+set('transformer_majorsent_fixed_biobert_embedding'.split()),
+set('transformer_majorsent_trainable_embedding'.split()))
+    batch_stash
+        decoded_attributes: set: section_ids, majorsent_ids, majorsent_id_mask, transformer_majorsent_fixed_biobert_embedding
+        class_name: zensols.deeplearn.batch.BatchStash
+        delegate: instance: batch_dir_stash
+        split_stash_container: instance: note_split_feature_stash
+        data_point_id_sets_path: path: ./data/batch/batch-point-keys.dat
+        vectorizer_manager_set: instance: vectorizer_manager_set
+        model_torch_config: instance: gpu_torch_config
+        chunk_size: 0
+        workers: 2
+        batch_size: 20
+        data_point_type: class: sidmodel.SectionDataPoint
+        batch_type: class: sidmodel.SectionBatch
+        batch_feature_mappings: None
+    classify_batch_mappings
+        batch_feature_mapping_adds: json: ["dataclass(zensols.deeplearn.batch.BatchFeatureMapping): classify_label_batch_mappings", "dataclass(zensols.deeplearn.batch.BatchFeatureMapping): lang_batch_mappings"]
+    classify_feature_prediction_mapper
+        class_name: zensols.deepnlp.classify.ClassificationPredictionMapper
+        vec_manager: instance: language_feature_manager
+        label_feature_id: classify_label_vectorizer_manager.lblabel
+    classify_label_batch_mappings
+        label_attribute_name: label
+        manager_mappings: json: [{"vectorizer_manager_name": "classify_label_vectorizer_manager", "fields": [{"attr": "label", "feature_id": "lblabel", "is_agg": true}]}]
+    classify_label_vectorizer
+        class_name: zensols.deeplearn.vectorize.NominalEncodedEncodableFeatureVectorizer
+        feature_id: lblabel
+    classify_label_vectorizer_manager
+        class_name: zensols.deeplearn.vectorize.FeatureVectorizerManager
+        torch_config: instance: torch_config
+        configured_vectorizers: list: classify_label_vectorizer
+    classify_net_settings
+        class_name: zensols.deepnlp.classify.ClassifyNetworkSettings
+        recurrent_settings: None
+        linear_settings: instance: linear_settings
+        batch_stash: instance: batch_stash
+        dropout: None
+    cleaner
+        class_name: sidmodel.Cleaner
+        clean_dirs: eval({'resolve':
+{'d': 'path: ./data',
+'n': 'path: ./corpus/notes'}}):
+{'somewhat temporary files': d, 'notes': n}
+    count_feature_vectorizer
+        class_name: zensols.deepnlp.vectorize.CountEnumContainerFeatureVectorizer
+        feature_id: count
+        encode_transformed: False
+    dataset_stash
+        class_name: zensols.dataset.SortedDatasetSplitStash
+        delegate: instance: batch_stash
+        split_container: instance: batch_stash
+        sort_function: eval: int
+    deeplearn_default
+        model_name: BERT-CRF_sent BioBERT
+        batch_dir: ./data/batch
+        temporary_dir: ./data/model
+        results_dir: ./results
+    deepnlp_default
+        embedding: transformer_majorsent_fixed_biobert_embedding
+        glove_trainable: True
+        word2vec_trainable: False
+        fasttext_trainable: False
+        transformer_encode_transformed: True
+        glove_encode_transformed: False
+        word2vec_encode_transformed: True
+        fasttext_encode_transformed: False
+        labels: eval(
+{'import': ['pandas as pd', 'zensols.nlp as n'],
+'resolve': {'ad': 'path: ./corpus/section-id-annotations/ontology.csv'}}):
+[n.FeatureToken.NONE] + pd.read_csv(ad).section_id.drop_duplicates().to_list()
+        num_labels: eval(
+{'import': ['pandas as pd'],
+'resolve': {'ad': 'path: ./corpus/section-id-annotations/ontology.csv'}}):
+len(pd.read_csv(ad).section_id.drop_duplicates()) + 1
+    depth_token_feature_vectorizer
+        class_name: zensols.deepnlp.vectorize.DepthFeatureDocumentVectorizer
+        feature_id: dep
+        encode_transformed: False
+    doc_parser
+        class_name: zensols.nlp.SpacyFeatureDocumentParser
+        lang: en
+        model_name: en_core_web_sm
+        token_normalizer: instance: map_filter_token_normalizer
+        token_feature_ids: eval({'import': ['zensols.nlp as nlp', 'zensols.mimic as m']}):
+nlp.FeatureToken.FEATURE_IDS | {m.MimicTokenDecorator.TOKEN_FEATURE_ID}
+        doc_class: class: sidmodel.NoteFeatureDocument
+        sent_class: class: sidmodel.NoteFeatureSentence
+        components: instance: list: mimic_component, mimic_tokenizer_component
+        remove_empty_sentences: True
+        token_decorators: instance: list: mimic_token_decorator
+    embedded_analyzer
+        class_name: sidmodel.EmbeddingAnalyzer
+        doc_stash: instance: note_feature_doc_stash
+        med_lib: None
+        width: 1100
+        height: 900
+        normalize: None
+        dim_reduction_meth: pca
+        ontology_file: path: ./corpus/section-id-annotations/ontology.csv
+        temporary_dir: path: ./data/tmp
+    enum_feature_vectorizer
+        class_name: zensols.deepnlp.vectorize.EnumContainerFeatureVectorizer
+        feature_id: enum
+        encode_transformed: False
+    executor
+        class_name: zensols.deeplearn.model.ModelExecutor
+        model_settings: instance: model_settings
+        dataset_stash: instance: dataset_stash
+        dataset_split_names: eval: 'train validation test'.split()
+        result_path: path: ./results/model
+        intermediate_results_path: path: ./data/model/tmp
+        update_path: path: ./data/model/update.json
+        net_settings: instance: recurrent_crf_net_settings
+    facade
+        class_name: sidmodel.SectionFacade
+    fasttext_crawl_300_embedding
+        class_name: zensols.deepnlp.embed.FastTextEmbedModel
+        installer: instance: fasttext_installer
+        resource: instance: fasttext_crawl_300_resource
+        desc: 2M
+        dimension: 300
+        corpus: crawl
+        lowercase: False
+    fasttext_crawl_300_embedding_layer
+        class_name: zensols.deepnlp.layer.WordVectorEmbeddingLayer
+        embed_model: instance: fasttext_crawl_300_embedding
+        feature_vectorizer: instance: language_feature_manager
+        trainable: False
+    fasttext_crawl_300_feature_vectorizer
+        class_name: zensols.deepnlp.vectorize.WordVectorEmbeddingFeatureVectorizer
+        feature_id: wvftcrawl300
+        fold_method: concat_tokens
+        embed_model: instance: fasttext_crawl_300_embedding
+        encode_transformed: False
+    fasttext_crawl_300_resource
+        class_name: zensols.install.Resource
+        url: https://dl.fbaipublicfiles.com/fasttext/vectors-english/crawl-300d-2M.vec.zip
+        name: None
+        clean_up: False
+    fasttext_installer
+        class_name: zensols.install.Installer
+        downloader: object: zensols.install.Downloader
+        package_resource: zensols.deepnlp
+        resources: instance: list: fasttext_news_300_resource, fasttext_crawl_300_resource
+    fasttext_news_300_embedding
+        class_name: zensols.deepnlp.embed.FastTextEmbedModel
+        installer: instance: fasttext_installer
+        resource: instance: fasttext_news_300_resource
+        desc: 1M
+        dimension: 300
+        corpus: news
+        lowercase: False
+    fasttext_news_300_embedding_layer
+        class_name: zensols.deepnlp.layer.WordVectorEmbeddingLayer
+        embed_model: instance: fasttext_news_300_embedding
+        feature_vectorizer: instance: language_feature_manager
+        trainable: False
+    fasttext_news_300_feature_vectorizer
+        class_name: zensols.deepnlp.vectorize.WordVectorEmbeddingFeatureVectorizer
+        feature_id: wvftnews300
+        fold_method: concat_tokens
+        embed_model: instance: fasttext_news_300_embedding
+        encode_transformed: False
+    fasttext_news_300_resource
+        class_name: zensols.install.Resource
+        url: https://dl.fbaipublicfiles.com/fasttext/vectors-english/wiki-news-300d-1M.vec.zip
+        name: None
+        clean_up: False
+    feature_prediction_mapper
+        class_name: sidmodel.SectionPredictionMapper
+        vec_manager: instance: language_feature_manager
+        label_feature_id: token_classify_label_vectorizer_manager.tclabel1
+    filter_empty
+        class_name: zensols.nlp.FilterRegularExpressionMapper
+        regex: eval({'import': ['re']}): re.compile('^\u0024')
+        invert: True
+    filter_token_mapper
+        class_name: zensols.nlp.FilterTokenMapper
+        remove_space: True
+    glove_300_embedding
+        class_name: zensols.deepnlp.embed.GloveWordEmbedModel
+        installer: instance: glove_installer
+        resource: instance: glove_zip_resource
+        desc: 6B
+        dimension: 300
+        lowercase: True
+    glove_300_embedding_layer
+        class_name: zensols.deepnlp.layer.WordVectorEmbeddingLayer
+        embed_model: instance: glove_300_embedding
+        feature_vectorizer: instance: language_feature_manager
+        trainable: True
+    glove_300_feature_vectorizer
+        class_name: zensols.deepnlp.vectorize.WordVectorEmbeddingFeatureVectorizer
+        feature_id: wvglove300
+        fold_method: concat_tokens
+        embed_model: instance: glove_300_embedding
+        encode_transformed: False
+    glove_50_embedding
+        class_name: zensols.deepnlp.embed.GloveWordEmbedModel
+        installer: instance: glove_installer
+        resource: instance: glove_zip_resource
+        desc: 6B
+        dimension: 50
+        lowercase: True
+    glove_50_embedding_layer
+        class_name: zensols.deepnlp.layer.WordVectorEmbeddingLayer
+        embed_model: instance: glove_50_embedding
+        feature_vectorizer: instance: language_feature_manager
+        trainable: True
+    glove_50_feature_vectorizer
+        class_name: zensols.deepnlp.vectorize.WordVectorEmbeddingFeatureVectorizer
+        feature_id: wvglove50
+        fold_method: concat_tokens
+        embed_model: instance: glove_50_embedding
+        encode_transformed: False
+    glove_installer
+        class_name: zensols.install.Installer
+        downloader: object: zensols.install.Downloader
+        package_resource: zensols.deepnlp
+        resources: instance: list: glove_zip_resource
+    glove_zip_resource
+        class_name: zensols.install.Resource
+        url: https://nlp.stanford.edu/data/glove.6B.zip
+        name: None
+        check_path: glove.6B.50d.txt
+        rename: False
+        clean_up: False
+    gpu_torch_config
+        class_name: zensols.deeplearn.TorchConfig
+        use_gpu: True
+        data_type: eval({'import': ['torch']}): torch.float32
+    lang_batch_mappings
+        manager_mappings: json: [{"vectorizer_manager_name": "language_feature_manager", "fields": [{"attr": "glove_50_embedding", "feature_id": "wvglove50", "is_agg": true, "attr_access": "doc"}, {"attr": "glove_300_embedding", "feature_id": "wvglove300", "is_agg": true, "attr_access": "doc"}, {"attr": "fasttext_news_300_embedding", "feature_id": "wvftnews300", "is_agg": true, "attr_access": "doc"}, {"attr": "fasttext_crawl_300_embedding", "feature_id": "wvftcrawl300", "is_agg": true, "attr_access": "doc"}, {"attr": "word2vec_300_embedding", "feature_id": "w2v300", "is_agg": true, "attr_access": "doc"}, {"attr": "transformer_trainable_embedding", "feature_id": "transformer_trainable", "is_agg": true, "attr_access": "doc"}, {"attr": "transformer_fixed_embedding", "feature_id": "transformer_fixed", "is_agg": true, "attr_access": "doc"}, {"attr": "stats", "feature_id": "stats", "is_agg": false, "attr_access": "doc"}, {"attr": "enums", "feature_id": "enum", "is_agg": true, "attr_access": "doc"}, {"attr": "counts", "feature_id": "count", "is_agg": true, "attr_access": "doc"}, {"attr": "dependencies", "feature_id": "dep", "is_agg": true, "attr_access": "doc"}]}]
+    language_feature_manager
+        class_name: zensols.deepnlp.vectorize.FeatureDocumentVectorizerManager
+        torch_config: instance: gpu_torch_config
+        doc_parser: instance: doc_parser
+        token_length: -1
+        configured_vectorizers: list:
+glove_50_feature_vectorizer,
+glove_300_feature_vectorizer,
+word2vec_300_feature_vectorizer,
+fasttext_crawl_300_feature_vectorizer,
+note_category_token_vectorizer,
+transformer_fixed_feature_vectorizer,
+transformer_sent_fixed_feature_vectorizer,
+transformer_majorsent_trainable_feature_vectorizer,
+transformer_majorsent_fixed_feature_vectorizer,
+transformer_majorsent_fixed_biobert_feature_vectorizer
+    linear_settings
+        class_name: zensols.deeplearn.layer.DeepLinearNetworkSettings
+        middle_features: eval: []
+        in_features: 150
+        proportions: True
+        repeats: 1
+        dropout: None
+        activation: None
+        batch_norm_d: None
+        batch_norm_features: None
+        out_features: 51
+    lsi
+        class_name: zensols.deepnlp.index.LatentSemanticDocumentIndexerVectorizer
+        components: None
+        iterations: None
+    majorsent_mapper
+        class_name: sidmodel.MajorSentLabelMapper
+        section_ids_attribute: section_ids
+        majorsent_ids_attribute: majorsent_ids
+    majorsent_mask_vectorizer
+        class_name: zensols.deeplearn.vectorize.MaskFeatureVectorizer
+        feature_id: msmask
+    map_filter_token_normalizer
+        class_name: zensols.nlp.MapTokenNormalizer
+        mapper_class_list: list: filter_token_mapper, newline_split_token_mapper, filter_empty
+    mednlp_doc_parser
+        components: instance: list: mimic_component, mimic_tokenizer_component
+        remove_empty_sentences: True
+        token_decorators: instance: list: mimic_token_decorator
+        token_feature_ids: eval({'import': ['zensols.nlp as nlp', 'zensols.mednlp as m', 'zensols.mimic as mi']}):
+nlp.FeatureToken.FEATURE_IDS | m.MedicalFeatureToken.FEATURE_IDS | \
+{mi.MimicTokenDecorator.TOKEN_FEATURE_ID} - {'tuis', 'tui_descs_'}
+    mimic_component
+        class_name: zensols.nlp.Component
+        modules: list: zensols.nlp.component
+        pipe_name: regexner
+        pipe_add_kwargs: dict: {'first': True}
+        pipe_config: eval({'import': ['from zensols.mimic import MimicTokenDecorator as D']}):
+{'patterns': [(None, [D.PSEUDO_REGEX.pattern, D.SEP_REGEX.pattern])]}
+    mimic_notes_extractor
+        class_name: sidmodel.MimicNotesExtractor
+        anon_stash: instance: annotation_stash
+        notes_file: path: ./corpus/NOTEEVENTS.csv
+    mimic_token_decorator
+        class_name: zensols.mimic.MimicTokenDecorator
+    mimic_tokenizer_component
+        class_name: zensols.mimic.MimicTokenizerComponent
+    model_settings
+        learning_rate: 0.003
+        epochs: 50
+        class_name: zensols.deeplearn.model.ModelSettings
+        model_name: BERT-CRF_sent BioBERT
+        path: path: ./data/model
+        append_model_path: normalize
+        batch_iteration: gpu
+        scheduler_class_name: torch.optim.lr_scheduler.ReduceLROnPlateau
+        scale_gradient_params: dict: {'max_norm': 0.5, 'norm_type': 2.}
+        reduce_outcomes: None
+        batch_iteration_class_name: zensols.deeplearn.model.SequenceBatchIterator
+        prediction_mapper_name: feature_prediction_mapper
+    newline_split_token_mapper
+        class_name: zensols.nlp.SplitTokenMapper
+        regex: r'[\n]'
+    note_category_token_vectorizer
+        class_name: zensols.deepnlp.vectorize.OneHotEncodedFeatureDocumentVectorizer
+        feature_id: notecattok
+        optimize_bools: False
+        encode_transformed: False
+        categories: list: Consult, Discharge summary, Echo, Physician, Radiology
+        level: document
+        feature_attribute: category
+    note_category_vectorizer
+        class_name: zensols.deeplearn.vectorize.OneHotEncodedEncodableFeatureVectorizer
+        feature_id: notecat
+        optimize_bools: False
+        categories: list: Consult, Discharge summary, Echo, Physician, Radiology
+    note_feature_doc_dir_stash
+        class_name: zensols.persist.DirectoryStash
+        path: path: ./data/note-doc-parse
+    note_feature_doc_factory_stash
+        class_name: sidmodel.NoteFeatureDocumentStash
+        doc_parser: instance: doc_parser
+        anon_stash: instance: annotation_stash
+        mimic_notes_extractor: instance: mimic_notes_extractor
+    note_feature_doc_stash
+        class_name: zensols.multi.stash.MultiProcessFactoryStash
+        factory: instance: note_feature_doc_factory_stash
+        delegate: instance: note_feature_doc_dir_stash
+    note_feature_split_key_container
+        class_name: zensols.dataset.StratifiedStashSplitKeyContainer
+        stash: instance: note_feature_doc_stash
+        distribution: dict: {'train': 0.8, 'test': 0.1, 'validation': 0.1}
+        pattern: {name}.txt
+        key_path: path: ./corpus/dataset-row-ids
+        split_labels_path: path: ./data/tmp/feature-dataframe.dat
+        partition_attr: category
+        stratified_write: False
+    note_split_feature_stash
+        class_name: zensols.dataset.DatasetSplitStash
+        delegate: instance: note_feature_doc_stash
+        split_container: instance: note_feature_split_key_container
+    note_vectorizer_manager
+        class_name: zensols.deeplearn.vectorize.FeatureVectorizerManager
+        torch_config: instance: torch_config
+        configured_vectorizers: list: note_category_vectorizer
+    perf_metrics_dumper
+        class_name: zensols.deeplearn.model.LatexPerformanceMetricsDumper
+        results_dir: path: ./results/perf
+        config_dir: path: ./../config
+        name_replace: eval: ['^([^_]+)_([^ ]+)(.*)\u0024', '\u0024\\\\textrm{\\1}_{\\2}\u0024\\3']
+    recurrent_crf_net_settings
+        class_name: sidmodel.MajorSentNetworkSettings
+        label_mapper: instance: majorsent_mapper
+        mask_attribute: majorsent_id_mask
+        use_crf: True
+        batch_stash: instance: batch_stash
+        embedding_layer: instance: transformer_majorsent_fixed_biobert_embedding_layer
+        recurrent_crf_settings: instance: recurrent_crf_settings
+    recurrent_crf_settings
+        class_name: zensols.deeplearn.layer.RecurrentCRFNetworkSettings
+        network_type: lstm
+        input_size: 768
+        hidden_size: 150
+        num_layers: 2
+        num_labels: eval(
+{'import': ['pandas as pd'],
+'resolve': {'ad': 'path: ./corpus/section-id-annotations/ontology.csv'}}):
+len(pd.read_csv(ad).section_id.drop_duplicates()) + 1
+        bidirectional: True
+        decoder_settings: instance: linear_settings
+        score_reduction: sum
+        dropout: 0.15
+        activation: None
+        batch_norm_d: None
+        batch_norm_features: None
+    recurrent_settings
+        class_name: zensols.deeplearn.layer.RecurrentAggregationNetworkSettings
+        network_type: lstm
+        aggregation: max
+        input_size: None
+        hidden_size: 8
+        num_layers: 1
+        bidirectional: True
+        dropout: None
+    regular_expression_escape
+        dollar: \u0024
+    remove_sent_boundaries_component
+        class_name: zensols.nlp.Component
+        pipe_name: remove_sent_boundaries
+        modules: list: zensols.nlp.component
+        pipe_add_kwargs: dict: {'first': True}
+    result_analyzer
+        class_name: sidmodel.ResultAnalyzer
+        results_dir: path: ./results
+        anon_stash: instance: annotation_stash
+        feature_stash: instance: note_split_feature_stash
+        target_note_prop: resource(sidmodel): resources/target-note-proportions.csv
+        ontology_file: path: ./corpus/section-id-annotations/ontology.csv
+        temporary_dir: path: ./data/tmp
+    sidmodel_default
+        name: BERT-CRF_sent BioBERT
+        embedding: transformer_majorsent_fixed_biobert_embedding
+        root_dir: .
+        data_dir: ./data
+        temporary_dir: ./data/tmp
+        resources_dir: ./resources
+        results_dir: ./results
+        corpus_dir: ./corpus
+        anon_dir: ./corpus/section-id-annotations/annotations
+        ontology_file: ./corpus/section-id-annotations/ontology.csv
+        notes_file: ./corpus/NOTEEVENTS.csv
+        notes_text_dir: ./corpus/notes
+    sidmodel_notes
+        categories: Consult, Discharge summary, Echo, Physician, Radiology
+    stats_feature_vectorizer
+        class_name: zensols.deepnlp.vectorize.StatisticsFeatureDocumentVectorizer
+        feature_id: stats
+        encode_transformed: False
+    token_classify_label_1_vectorizer
+        class_name: zensols.deeplearn.vectorize.NominalEncodedEncodableFeatureVectorizer
+        feature_id: tclabel1
+        categories: eval(
+{'import': ['pandas as pd', 'zensols.nlp as n'],
+'resolve': {'ad': 'path: ./corpus/section-id-annotations/ontology.csv'}}):
+[n.FeatureToken.NONE] + pd.read_csv(ad).section_id.drop_duplicates().to_list()
+    token_classify_label_trans_vectorizer
+        class_name: zensols.deepnlp.transformer.TransformerNominalFeatureVectorizer
+        feature_id: tclabeltrans
+        encode_transformed: False
+        delegate_feature_id: tclabel1
+        embed_model: instance: transformer_fixed_embedding
+        fold_method: separate
+        label_all_tokens: True
+    token_classify_label_vectorizer
+        class_name: zensols.deeplearn.vectorize.AggregateEncodableFeatureVectorizer
+        feature_id: tclabel
+        delegate_feature_id: tclabel1
+    token_classify_label_vectorizer_manager
+        class_name: zensols.deeplearn.vectorize.FeatureVectorizerManager
+        torch_config: instance: torch_config
+        configured_vectorizers: list:
+token_classify_label_1_vectorizer,
+token_classify_label_vectorizer,
+token_classify_mask_vectorizer,
+token_classify_label_trans_vectorizer,
+token_classify_mask_trans_vectorizer,
+token_classify_majorsent_vectorizer,
+majorsent_mask_vectorizer
+    token_classify_majorsent_vectorizer
+        class_name: sidmodel.MajorSentLabelVectorizer
+        feature_id: mslabel
+        encode_transformed: False
+        delegate_feature_id: tclabel1
+        fold_method: separate
+    token_classify_mask_trans_vectorizer
+        class_name: zensols.deepnlp.transformer.TransformerMaskFeatureVectorizer
+        feature_id: tcmasktrans
+        encode_transformed: False
+        embed_model: instance: transformer_fixed_embedding
+        manager: instance: token_classify_label_vectorizer_manager
+        fold_method: separate
+    token_classify_mask_vectorizer
+        class_name: zensols.deeplearn.vectorize.MaskFeatureVectorizer
+        feature_id: tcmask
+    torch_config
+        class_name: zensols.deeplearn.TorchConfig
+        use_gpu: False
+        data_type: eval({'import': ['torch']}): torch.float32
+    transformer_fixed_embedding
+        class_name: zensols.deepnlp.transformer.TransformerEmbedding
+        tokenizer: instance: transformer_fixed_tokenizer
+        output: last_hidden_state
+    transformer_fixed_embedding_layer
+        class_name: zensols.deepnlp.transformer.TransformerEmbeddingLayer
+        embed_model: instance: transformer_fixed_embedding
+        feature_vectorizer: instance: language_feature_manager
+    transformer_fixed_feature_vectorizer
+        class_name: zensols.deepnlp.transformer.TransformerEmbeddingFeatureVectorizer
+        feature_id: transformer_fixed
+        fold_method: concat_tokens
+        embed_model: instance: transformer_fixed_embedding
+        encode_transformed: True
+    transformer_fixed_resource
+        class_name: zensols.deepnlp.transformer.TransformerResource
+        torch_config: instance: gpu_torch_config
+        model_id: bert-base-cased
+        cased: True
+        cache: False
+        trainable: False
+    transformer_fixed_tokenizer
+        class_name: zensols.deepnlp.transformer.TransformerDocumentTokenizer
+        resource: instance: transformer_fixed_resource
+        word_piece_token_length: 0
+    transformer_majorsent_fixed_biobert_embedding
+        class_name: zensols.deepnlp.transformer.TransformerEmbedding
+        tokenizer: instance: transformer_majorsent_fixed_biobert_tokenizer
+    transformer_majorsent_fixed_biobert_embedding_layer
+        class_name: zensols.deepnlp.transformer.TransformerEmbeddingLayer
+        embed_model: instance: transformer_majorsent_fixed_biobert_embedding
+        feature_vectorizer: instance: language_feature_manager
+    transformer_majorsent_fixed_biobert_feature_vectorizer
+        class_name: sidmodel.MajorSentTransformerEmbeddingFeatureVectorizer
+        feature_id: mstranfixed
+        fold_method: separate
+        embed_model: instance: transformer_majorsent_fixed_biobert_embedding
+        encode_transformed: True
+    transformer_majorsent_fixed_biobert_resource
+        class_name: zensols.deepnlp.transformer.TransformerResource
+        torch_config: instance: gpu_torch_config
+        model_id: dmis-lab/biobert-base-cased-v1.1
+        cased: True
+        cache: False
+        trainable: False
+    transformer_majorsent_fixed_biobert_tokenizer
+        class_name: zensols.deepnlp.transformer.TransformerDocumentTokenizer
+        resource: instance: transformer_majorsent_fixed_biobert_resource
+        word_piece_token_length: 0
+    transformer_majorsent_fixed_embedding
+        class_name: zensols.deepnlp.transformer.TransformerEmbedding
+        tokenizer: instance: transformer_majorsent_fixed_tokenizer
+    transformer_majorsent_fixed_embedding_layer
+        class_name: zensols.deepnlp.transformer.TransformerEmbeddingLayer
+        embed_model: instance: transformer_majorsent_fixed_embedding
+        feature_vectorizer: instance: language_feature_manager
+    transformer_majorsent_fixed_feature_vectorizer
+        class_name: sidmodel.MajorSentTransformerEmbeddingFeatureVectorizer
+        feature_id: mstranfixed
+        fold_method: separate
+        embed_model: instance: transformer_majorsent_fixed_embedding
+        encode_transformed: True
+    transformer_majorsent_fixed_resource
+        class_name: zensols.deepnlp.transformer.TransformerResource
+        torch_config: instance: gpu_torch_config
+        model_id: bert-base-cased
+        cased: True
+        cache: False
+        trainable: False
+    transformer_majorsent_fixed_tokenizer
+        class_name: zensols.deepnlp.transformer.TransformerDocumentTokenizer
+        resource: instance: transformer_majorsent_fixed_resource
+        word_piece_token_length: 0
+    transformer_majorsent_trainable_embedding
+        class_name: zensols.deepnlp.transformer.TransformerEmbedding
+        tokenizer: instance: transformer_majorsent_trainable_tokenizer
+    transformer_majorsent_trainable_embedding_layer
+        class_name: zensols.deepnlp.transformer.TransformerEmbeddingLayer
+        embed_model: instance: transformer_majorsent_trainable_embedding
+        feature_vectorizer: instance: language_feature_manager
+    transformer_majorsent_trainable_feature_vectorizer
+        class_name: sidmodel.MajorSentEmbeddingVectorizer
+        feature_id: mstrantrainable
+        fold_method: sentence
+        embed_model: instance: transformer_majorsent_trainable_embedding
+        encode_transformed: False
+    transformer_majorsent_trainable_resource
+        class_name: zensols.deepnlp.transformer.TransformerResource
+        torch_config: instance: gpu_torch_config
+        model_id: google/bigbird-roberta-base
+        cased: True
+        cache: False
+        trainable: True
+    transformer_majorsent_trainable_tokenizer
+        class_name: zensols.deepnlp.transformer.TransformerDocumentTokenizer
+        resource: instance: transformer_majorsent_trainable_resource
+        word_piece_token_length: 0
+    transformer_sent_fixed_feature_vectorizer
+        class_name: zensols.deepnlp.transformer.TransformerEmbeddingFeatureVectorizer
+        feature_id: transformer_sent_fixed
+        fold_method: separate
+        embed_model: instance: transformer_fixed_embedding
+        encode_transformed: True
+    transformer_trainable_embedding
+        class_name: zensols.deepnlp.transformer.TransformerEmbedding
+        tokenizer: instance: transformer_trainable_tokenizer
+    transformer_trainable_embedding_layer
+        class_name: zensols.deepnlp.transformer.TransformerEmbeddingLayer
+        embed_model: instance: transformer_trainable_embedding
+        feature_vectorizer: instance: language_feature_manager
+    transformer_trainable_feature_vectorizer
+        class_name: zensols.deepnlp.transformer.TransformerEmbeddingFeatureVectorizer
+        feature_id: transformer_trainable
+        fold_method: concat_tokens
+        embed_model: instance: transformer_trainable_embedding
+        encode_transformed: False
+    transformer_trainable_resource
+        class_name: zensols.deepnlp.transformer.TransformerResource
+        torch_config: instance: gpu_torch_config
+        model_id: bert-base-cased
+        cased: True
+        cache: False
+        trainable: True
+    transformer_trainable_tokenizer
+        class_name: zensols.deepnlp.transformer.TransformerDocumentTokenizer
+        resource: instance: transformer_trainable_resource
+        word_piece_token_length: 0
+    vectorizer_manager_set
+        class_name: zensols.deeplearn.vectorize.FeatureVectorizerManagerSet
+        names: list:
+token_classify_label_vectorizer_manager,
+language_feature_manager,
+note_vectorizer_manager
+    word2vec_300_embedding
+        class_name: zensols.deepnlp.embed.Word2VecModel
+        installer: instance: word2vec_installer
+        resource: instance: word2vec_zip_resource
+        dimension: 300
+    word2vec_300_embedding_layer
+        class_name: zensols.deepnlp.layer.WordVectorEmbeddingLayer
+        embed_model: instance: word2vec_300_embedding
+        feature_vectorizer: instance: language_feature_manager
+        trainable: False
+    word2vec_300_feature_vectorizer
+        class_name: zensols.deepnlp.vectorize.WordVectorEmbeddingFeatureVectorizer
+        feature_id: w2v300
+        fold_method: concat_tokens
+        embed_model: instance: word2vec_300_embedding
+        encode_transformed: True
+        decode_embedding: True
+    word2vec_installer
+        class_name: zensols.install.Installer
+        downloader: object: zensols.install.Downloader
+        package_resource: zensols.deepnlp
+        resources: instance: list: word2vec_zip_resource
+    word2vec_zip_resource
+        class_name: zensols.install.Resource
+        url: https://s3.amazonaws.com/dl4j-distribution/GoogleNews-vectors-negative300.bin.gz
+        name: None
+        rename: False

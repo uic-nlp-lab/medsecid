@@ -1,0 +1,11 @@
+Type,Tokens,Spans,Notes
+physical-examination,203K (8%),"1,385 (6%)","Consult, Physician"
+history-of-present-illness,239K (9%),"1,348 (6%)","Consult, Discharge summary, Physician"
+allergies,"9,221 (0%)","1,205 (5%)","Consult, Discharge summary, Physician"
+hospital-course,692K (26%),"1,165 (5%)",Discharge summary
+labs-imaging,416K (16%),"1,155 (5%)","Consult, Discharge summary, Physician"
+past-medical-history,60K (2%),"1,141 (5%)","Consult, Discharge summary, Physician"
+discharge-condition,14K (1%),"1,132 (5%)",Discharge summary
+discharge-instructions,183K (7%),"1,077 (5%)",Discharge summary
+discharge-diagnosis,34K (1%),"1,040 (5%)",Discharge summary
+chief-complaint,"9,622 (0%)",996 (4%),"Consult, Discharge summary, Physician"

@@ -1,0 +1,6 @@
+category,proportion
+Physician,0.1425
+Radiology,0.0975
+Echo,0.0375
+Consult,0.0225
+Discharge summary,0.7

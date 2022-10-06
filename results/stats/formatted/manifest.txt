@@ -1,0 +1,9 @@
+corpus-content.csv: Count
+ontology.csv: Relations
+note-events.csv: Proportion
+multi-sent-anons.csv: Proportion
+annotation-category.csv: Proportion Token
+annotation-section-id.csv: Notes
+annotation-section-id-combined.csv: Notes
+note-descriptions.csv: Description
+section-descriptions.csv: Description

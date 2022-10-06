@@ -1,0 +1,51 @@
+Id,Count Annotation,Proportion Annotation,Count Token,Proportion Token,Notes
+physical-examination,1385,6.14%,202820,7.71%,"Consult, Physician"
+history-of-present-illness,1348,5.97%,239009,9.09%,"Consult, Discharge summary, Physician"
+allergies,1205,5.34%,9221,0.35%,"Consult, Discharge summary, Physician"
+hospital-course,1165,5.16%,692281,26.32%,Discharge summary
+labs-imaging,1155,5.12%,416192,15.82%,"Consult, Discharge summary, Physician"
+past-medical-history,1141,5.06%,59861,2.28%,"Consult, Discharge summary, Physician"
+discharge-condition,1132,5.02%,13707,0.52%,Discharge summary
+discharge-instructions,1077,4.77%,182625,6.94%,Discharge summary
+discharge-diagnosis,1040,4.61%,34245,1.30%,Discharge summary
+chief-complaint,996,4.41%,9622,0.37%,"Consult, Discharge summary, Physician"
+discharge-medications,914,4.05%,195627,7.44%,Discharge summary
+social-history,912,4.04%,28025,1.07%,"Consult, Discharge summary, Physician"
+medication-history,867,3.84%,48737,1.85%,"Consult, Discharge summary, Physician"
+family-history,802,3.55%,11177,0.42%,"Consult, Discharge summary, Physician"
+discharge-disposition,754,3.34%,5602,0.21%,Discharge summary
+major-surgical-or-invasive-procedure,704,3.12%,15860,0.60%,Discharge summary
+facility,502,2.23%,2668,0.10%,Discharge summary
+reason,458,2.03%,5588,0.21%,"Consult, Radiology"
+findings,395,1.75%,57866,2.20%,"Echo, Radiology"
+assessment-and-plan,381,1.69%,131338,4.99%,"Consult, Physician"
+review-of-systems,329,1.46%,7422,0.28%,"Consult, Discharge summary, Physician"
+image-type,328,1.45%,1820,0.07%,Radiology
+last-dose-of-antibiotics,293,1.30%,3689,0.14%,"Consult, Physician"
+24-hour-events,250,1.11%,16202,0.62%,Physician
+code-status,237,1.05%,1879,0.07%,Physician
+impression,224,0.99%,8233,0.31%,"Echo, Radiology"
+disposition,210,0.93%,1161,0.04%,Physician
+conclusions,206,0.91%,27974,1.06%,Echo
+communication,199,0.88%,1304,0.05%,Physician
+patient-test-information,198,0.88%,13247,0.50%,Echo
+medical-condition,195,0.86%,3482,0.13%,Radiology
+other-medications,194,0.86%,5999,0.23%,Consult
+flowsheet-data-vitals,192,0.85%,30606,1.16%,Physician
+infusions,190,0.84%,1668,0.06%,Consult
+current-medications,170,0.75%,10156,0.39%,"Consult, Discharge summary, Physician"
+comparison,118,0.52%,1820,0.07%,Radiology
+addendum,118,0.52%,26658,1.01%,"Discharge summary, Radiology"
+past-surgical-history,103,0.46%,2716,0.10%,"Consult, Discharge summary, Physician"
+indication,83,0.37%,1411,0.05%,"Echo, Radiology"
+history,82,0.36%,1364,0.05%,Radiology
+prenatal-screens,67,0.30%,1890,0.07%,Discharge summary
+labs,53,0.23%,5626,0.21%,Discharge summary
+technique,38,0.17%,969,0.04%,Radiology
+contrast,37,0.16%,225,0.01%,Radiology
+imaging,34,0.15%,11080,0.42%,Discharge summary
+wet-read,29,0.13%,1388,0.05%,Radiology
+clinical-implications,22,0.10%,849,0.03%,Echo
+critical-care-attending-addendum,18,0.08%,4506,0.17%,Physician
+social-and-family-history,10,0.04%,648,0.02%,Consult
+procedure,1,0.00%,156,0.01%,Radiology

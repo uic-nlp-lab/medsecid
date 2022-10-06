@@ -1,0 +1,181 @@
+corpus content
+description          count
+-------------------  ---------
+Documents            2,002
+Annotations          22,561
+Annotated Sentences  259,286
+Total Tokens         2,630,525
+Annotated Tokens     2,558,219
+
+ontology count
+  notes    sections    relations
+-------  ----------  -----------
+      5          51           80
+
+annotated note events
+category             count    proportion
+-----------------  -------  ------------
+Discharge summary     1254     0.626374
+Physician              288     0.143856
+Radiology              205     0.102398
+Echo                   198     0.0989011
+Consult                 57     0.0284715
+
+number of muliple unique annotations across sentences
+  unique_sections    count    proportion
+-----------------  -------  ------------
+                1   253025   0.975853
+                2     5589   0.0215553
+                3      589   0.00227162
+                4       72   0.000277686
+                5       11   4.24242e-05
+
+annotation span and token categories
+category             count_annotation    proportion_annotation    count_token    proportion_token
+-----------------  ------------------  -----------------------  -------------  ------------------
+Discharge summary               15851                0.702584         2124686           0.807704
+Physician                        3691                0.163601          322229           0.122496
+Radiology                        1667                0.0738886          44318           0.0168476
+Echo                              737                0.032667           84810           0.0322407
+Consult                           615                0.0272594          54482           0.0207115
+
+annotation span and token sections
+id                                      count_annotation    proportion_annotation    count_token    proportion_token  notes
+------------------------------------  ------------------  -----------------------  -------------  ------------------  -------------------------------------
+physical-examination                                1385              0.0613891           202820         0.0771025    Consult, Physician
+history-of-present-illness                          1348              0.0597491           239009         0.0908598    Consult, Discharge summary, Physician
+allergies                                           1205              0.0534108             9221         0.00350538   Consult, Discharge summary, Physician
+hospital-course                                     1165              0.0516378           692281         0.263172     Discharge summary
+labs-imaging                                        1155              0.0511945           416192         0.158216     Consult, Discharge summary, Physician
+past-medical-history                                1141              0.050574             59861         0.0227563    Consult, Discharge summary, Physician
+discharge-condition                                 1132              0.0501751            13707         0.00521075   Discharge summary
+discharge-instructions                              1077              0.0477372           182625         0.0694253    Discharge summary
+discharge-diagnosis                                 1040              0.0460972            34245         0.0130183    Discharge summary
+chief-complaint                                      996              0.044147              9622         0.00365782   Consult, Discharge summary, Physician
+discharge-medications                                914              0.0405124           195627         0.074368     Discharge summary
+social-history                                       912              0.0404237            28025         0.0106538    Consult, Discharge summary, Physician
+medication-history                                   867              0.0384291            48737         0.0185275    Consult, Discharge summary, Physician
+family-history                                       802              0.0355481            11177         0.00424896   Consult, Discharge summary, Physician
+discharge-disposition                                754              0.0334205             5602         0.00212961   Discharge summary
+major-surgical-or-invasive-procedure                 704              0.0312043            15860         0.00602921   Discharge summary
+facility                                             502              0.0222508             2668         0.00101425   Discharge summary
+reason                                               458              0.0203005             5588         0.00212429   Consult, Radiology
+findings                                             395              0.0175081            57866         0.0219979    Echo, Radiology
+assessment-and-plan                                  381              0.0168875           131338         0.0499284    Consult, Physician
+review-of-systems                                    329              0.0145827             7422         0.00282149   Consult, Discharge summary, Physician
+image-type                                           328              0.0145384             1820         0.000691877  Radiology
+last-dose-of-antibiotics                             293              0.012987              3689         0.00140238   Consult, Physician
+24-hour-events                                       250              0.0110811            16202         0.00615923   Physician
+code-status                                          237              0.0105049             1879         0.000714306  Physician
+impression                                           224              0.00992864            8233         0.00312979   Echo, Radiology
+disposition                                          210              0.0093081             1161         0.000441357  Physician
+conclusions                                          206              0.0091308            27974         0.0106344    Echo
+communication                                        199              0.00882053            1304         0.000495719  Physician
+patient-test-information                             198              0.00877621           13247         0.00503588   Echo
+medical-condition                                    195              0.00864323            3482         0.00132369   Radiology
+other-medications                                    194              0.00859891            5999         0.00228053   Consult
+flowsheet-data-vitals                                192              0.00851026           30606         0.0116349    Physician
+infusions                                            190              0.00842161            1668         0.000634094  Consult
+current-medications                                  170              0.00753513           10156         0.00386083   Consult, Discharge summary, Physician
+comparison                                           118              0.00523026            1820         0.000691877  Radiology
+addendum                                             118              0.00523026           26658         0.0101341    Discharge summary, Radiology
+past-surgical-history                                103              0.0045654             2716         0.00103249   Consult, Discharge summary, Physician
+indication                                            83              0.00367891            1411         0.000536395  Echo, Radiology
+history                                               82              0.00363459            1364         0.000518528  Radiology
+prenatal-screens                                      67              0.00296973            1890         0.000718488  Discharge summary
+labs                                                  53              0.00234919            5626         0.00213874   Discharge summary
+technique                                             38              0.00168432             969         0.000368368  Radiology
+contrast                                              37              0.00164                225         8.55343e-05  Radiology
+imaging                                               34              0.00150703           11080         0.00421209   Discharge summary
+wet-read                                              29              0.0012854             1388         0.000527651  Radiology
+clinical-implications                                 22              0.000975134            849         0.000322749  Echo
+critical-care-attending-addendum                      18              0.000797837           4506         0.00171297   Physician
+social-and-family-history                             10              0.000443243            648         0.000246339  Consult
+procedure                                              1              4.43243e-05            156         5.93038e-05  Radiology
+
+annotation span and token sections combined
+type                        tokens      spans       notes
+--------------------------  ----------  ----------  -------------------------------------
+physical-examination        203K (8%)   1,385 (6%)  Consult, Physician
+history-of-present-illness  239K (9%)   1,348 (6%)  Consult, Discharge summary, Physician
+allergies                   9,221 (0%)  1,205 (5%)  Consult, Discharge summary, Physician
+hospital-course             692K (26%)  1,165 (5%)  Discharge summary
+labs-imaging                416K (16%)  1,155 (5%)  Consult, Discharge summary, Physician
+past-medical-history        60K (2%)    1,141 (5%)  Consult, Discharge summary, Physician
+discharge-condition         14K (1%)    1,132 (5%)  Discharge summary
+discharge-instructions      183K (7%)   1,077 (5%)  Discharge summary
+discharge-diagnosis         34K (1%)    1,040 (5%)  Discharge summary
+chief-complaint             9,622 (0%)  996 (4%)    Consult, Discharge summary, Physician
+
+note descriptions
+name               description
+-----------------  -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Consult            Notes generated when a specialst intervenes in a patient's care.
+Discharge summary  A discharge summary describes a patient's stay at a hospital and the care they received.  They can also include follow up instructions, medications and a schedule for future appointments.
+Echo               An ultrasound of the heart.
+Physician          Daily notes taken by the physician on their rounds as a part of a patient check up.
+Radiology          Diagnosis and other notes taken by a radiologiest based on images such as xrays, MRI, CAT scans etc.
+
+section descriptions
+section_id                            name                                  description
+------------------------------------  ------------------------------------  -----------------------------------------------------------------------------------------------------------------------------------------------------
+24-hour-events                        24 Hour Events                        Description of what happened in the past 24 hours of the patients stay.
+addendum                              Addendum                              An addition to the note.
+allergies                             Allergies                             Patient allergies to medication and food of varying severity.
+assessment-and-plan                   Assessment And Plan                   An overview of the problems that are occuring and the plan to address each problem.
+critical-care-attending-addendum      Attending Addendum                    The attending physician's addition to the note.
+chief-complaint                       Chief Complaint                       The reason why the patient came to the hospital.
+clinical-implications                 Clinical Implications                 Why this study is important.
+code-status                           Code Status                           What should be done in the event of a cardiac or respiratory arrest, end of goals care.
+communication                         Communication                         Information about who to contact and the relation to the patient.
+comparison                            Comparison                            Comparing the new study to prior studies to determine interval changes.
+conclusions                           Conclusions                           Interpretation of the findings in relation to the patient's condition.
+contrast                              Contrast                              Was contrast introduced into the patient.
+current-medications                   Current Medications                   Medications that the patient are taking at home.
+discharge-condition                   Discharge Condition                   The stability of the patient upon discharge.
+discharge-diagnosis                   Discharge Diagnosis                   The diagnosis of the patient after being worked up in the hospital.
+discharge-disposition                 Discharge Disposition                 Where the patient is being discharged to.
+discharge-instructions                Discharge Instructions                Post discharge instructions regarding what the patient can and cannot do.
+discharge-medications                 Discharge Medications                 Medications that the patient will sent home with and to continue taking.
+disposition                           Disposition                           Where the patient will go within the hospital.
+family-history                        Family History                        Medical history of family members.
+findings                              Findings                              Specific finidngs during the study.
+flowsheet-data-vitals                 Flowsheet Data/Vitals                 Information pulled from flowsheets that are discretely kept within the ehr.
+history                               History                               Patient's clinical history warranting exam.
+history-of-present-illness            History Of Present Illness            A description of the events surrounding the reason why the patient came to the hospital: Symptom onset, duration, severity and associatating factors.
+hospital-course                       Hospital Course                       A summary of what happened during the patient's time in the hospital.
+image-type                            Image Type                            The type of study being performed.
+imaging                               Imaging                               All image related orders placed by the physician including: CT, XRAY, ECHO, MRI, Ultrasound.
+impression                            Impression                            Overall summerization of the study.
+indication                            Indication                            Why the study was performed.
+infusions                             Infusions                             Medications classified as a constant infusion.
+labs                                  Labs                                  Laboratory values.
+labs-imaging                          Labs / Imaging                        Lab and radiological results.
+last-dose-of-antibiotics              Last Dose Of Antibiotics              Time of the last dose of antibiotic medications.
+major-surgical-or-invasive-procedure  Major Surgical Or Invasive Procedure  Any procedures or surgies that occured while the patient was at the hospital.
+medical-condition                     Medical Condition                     History of the patient and why the patient needs the study.
+medication-history                    Medication History                    Medications that the patient are taking at home.
+other-medications                     Other Medications                     Other medications the patient is receiving.
+past-medical-history                  Past Medical History                  Medical problems a patient has.
+past-surgical-history                 Past Surgical History                 All surgeries the patient has had in their past.
+patient-test-information              Patient/Test Information              Basic and standardized information of the patient.
+physical-examination                  Physical Examination                  Evalutating anatomic finds of a patient through palpation and auscultation.
+prenatal-screens                      Prenatal Screens                      Screening of blood type and infections prior to delivery.
+procedure                             Procedure                             Procedure name.
+reason                                Reason                                Why the consulting team was brought in for the patient's care.
+review-of-systems                     Review of Systems                     A generalized review of potential symptoms that the patient might not have addressed in the chief complaint or history of present illness.
+social-history                        Social History                        History of occupation, recreational activities, and living situation.
+social-and-family-history             Social and Family History             Combination of social and family history.
+technique                             Technique                             How the procedure was being performed.
+wet-read                              Wet Read                              Initial read, not the official read of the study.
+addendum                              addendum                              An addition to the note.
+facility                              facility                              The location the patient is going after discharge.
+
+note needed for annoatation
+category             count    prop_current    prop_target    prop_need      need
+-----------------  -------  --------------  -------------  -----------  --------
+Discharge summary     1254       0.626374          0.7      0.0736264    147.4
+Physician              288       0.143856          0.1425  -0.00135614    -2.715
+Radiology              205       0.102398          0.0975  -0.0048976     -9.805
+Echo                   198       0.0989011         0.0375  -0.0614011   -122.925
+Consult                 57       0.0284715         0.0225  -0.00597153   -11.955

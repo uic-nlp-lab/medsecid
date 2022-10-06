@@ -1,0 +1,5 @@
+*.pyc
+*_flymake.py
+.ipynb_checkpoints
+/pyvirenv
+/data
