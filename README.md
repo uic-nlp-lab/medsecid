@@ -47,13 +47,21 @@ to the [mimicsid] repository.
 If you use this project in your research please use the following BibTeX entry:
 
 ```bibtex
-@inproceedings{Landes_Patel_Huang_Webb_Eugenio_Caragea_2022,
-  title={A New Public Corpus for Clinical Section Identification: MedSecId},
-  booktitle={Proceedings of the 29th International Conference on Computational Linguistics},
-  author={Landes, Paul and Patel, Kunal and Huang, Sean and Webb, Adam and Eugenio, Barbara Di and Caragea, Cornelia},
-  place={Gyeongju, Republic of Korea},
-  year={2022},
-  month={Oct}}
+@inproceedings{landes-etal-2022-new,
+    title = "A New Public Corpus for Clinical Section Identification: {M}ed{S}ec{I}d",
+    author = "Landes, Paul  and
+      Patel, Kunal  and
+      Huang, Sean S.  and
+      Webb, Adam  and
+      Di Eugenio, Barbara  and
+      Caragea, Cornelia",
+    booktitle = "Proceedings of the 29th International Conference on Computational Linguistics",
+    month = oct,
+    year = "2022",
+    address = "Gyeongju, Republic of Korea",
+    publisher = "International Committee on Computational Linguistics",
+    url = "https://aclanthology.org/2022.coling-1.326",
+    pages = "3709--3721"}
 ```
 
 Also please cite the [Zensols Framework]:
@@ -82,6 +90,6 @@ Copyright (c) 2022 Paul Landes
 
 [MIT License]: https://opensource.org/licenses/MIT
 
-[A New Public Corpus for Clinical Section Identification: MedSecId]: https://example.com
+[A New Public Corpus for Clinical Section Identification: MedSecId]: https://aclanthology.org/2022.coling-1.326.pdf
 [mimicsid]: https://github.com/plandes/mimicsid
 [Zensols Framework]: https://github.com/plandes/deepnlp
