@@ -25,4 +25,4 @@ $(GIT_DOC_SRC_DIR):
 
 .PHONY:			deploy
 deploy:			gitdocdeploy
-			@echo "url: https://plandes.github.io/$(GIT_PROJ)"
+			@echo "url: https://$(GIT_USER).github.io/$(GIT_PROJ)"
