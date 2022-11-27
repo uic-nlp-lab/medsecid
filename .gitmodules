@@ -1,0 +1,3 @@
+[submodule "analysis/zenbuild"]
+	path = analysis/zenbuild
+	url = https://github.com/plandes/zenbuild
