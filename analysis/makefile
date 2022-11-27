@@ -11,7 +11,7 @@ DOC_DIR =		doc
 #
 # the name of this repo and user name of the repo owner
 GIT_PROJ =		medsecid
-GIT_USER =		uic-nlp
+GIT_USER =		uic-nlp-lab
 
 
 include ./zenbuild/main.mk
