@@ -42,6 +42,12 @@ you want to use the annotations and/or use the pretrained model, please refer
 to the [mimicsid] repository.
 
 
+## Data Analysis
+
+The medical concept (CUI) plot given in the paper, and others are available [as
+interactive 3D plots here](https://uic-nlp-lab.github.io/medsecid/index.html).
+
+
 ## Citation
 
 If you use this project in your research please use the following BibTeX entry:
