@@ -1,5 +1,7 @@
 # Baseline model for the MedSecId paper
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.7150451.svg)](https://doi.org/10.5281/zenodo.7150451)
+
 This contains a basic baseline model for identifying section in clinical text
 from the paper [A New Public Corpus for Clinical Section Identification:
 MedSecId].  The purpose of this repository is to provide a means to reproduce
